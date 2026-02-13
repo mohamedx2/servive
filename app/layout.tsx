@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Le Gardien de l'Héritage",
   description: "Secure your digital legacy with zero-knowledge encryption and heartbeat monitoring.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
