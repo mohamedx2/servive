@@ -34,8 +34,12 @@ export const templates = {
         subject: "📢 Legacy Transmission Triggered",
         html: `<h1>Final Notice</h1><p>The legacy transmission for ${name} has been triggered. Your designated heirs will be notified shortly.</p>`,
     }),
-    heirNotification: (userName: string, accessLink: string) => ({
-        subject: `🔐 Legacy Access: Document from ${userName}`,
-        html: `<h1>Hello,</h1><p>${userName} has entrusted you with a digital legacy. You can access the encrypted content here: <a href="${accessLink}">${accessLink}</a></p>`,
-    }),
+    heirNotification: (userName: string, accessLink: string) => {
+        // Replace localhost or 127.0.0.1 with the production URL
+        const fixedLink = accessLink.replace(/https?:\/\/(localhost|127\.0\.0\.1)(:[0-9]+)?/g, 'https://servive.vercel.app');
+        return {
+            subject: `🔐 Legacy Access: Document from ${userName}`,
+            html: `<h1>Hello,</h1><p>${userName} has entrusted you with a digital legacy. You can access the encrypted content here: <a href="${fixedLink}">${fixedLink}</a></p>`,
+        };
+    },
 };
